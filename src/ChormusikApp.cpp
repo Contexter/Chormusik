@@ -57,8 +57,10 @@ void ChormusikApp::prepareSettings( Settings *settings )
 void ChormusikApp::setup()
 {
     reverb = au::GenericUnit(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
-    // tryout working wirh bidule
+    // tryout working wirh bidule; done a auval -a from the commandline and see how audiounits are identified; TODO: make a test call for grassroots AU's made by JUCE
     bidule = au::GenericUnit('aufx', 'BIDS', 'PLOG') ;
+    speechSynth.getAvailableVoices();
+    speechSynth.setVoice("Petra");
     speechSynth.connectTo(bidule).connectTo(tap).connectTo(mixer).connectTo(output);
     output.start();
     
@@ -111,7 +113,7 @@ void ChormusikApp::setup()
 
 void ChormusikApp::mouseDown( MouseEvent event )
 {
-    std::string hello("lllllllllllllllllllltttttttttttttaaaaaaaddddddddddrrrrrrrrrrramoramoreamoremiomiomiomio amoremio amore mio lllllllllllllllllllltttttttttttttaaaaaaaddddddddddrrrrrrrrrrr");
+    std::string hello("Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuut");
 //    hello.append("HörenSaaaaaaaaaaaaaaggggggggggggggen ");
 //    hello.append("Sagen Hören? Fragen - Sagen säge Sarg , Sagen Höre Revolution ! Soooooooooo oder So. Maidan Maindan Maindan Maidaaaaaaaaaaaaaaaaaaaaaaaaaaaaa nnnnnn gggggggggggggggggggg de de de de de dede de dede de de Maidan");
     
