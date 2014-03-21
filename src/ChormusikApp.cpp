@@ -32,6 +32,7 @@ class ChormusikApp : public AppNative {
     au::Tap tap;
     au::TapSampleBuffer sampleBuffer;
     au::GenericUnit bidule;
+    au::GenericUnit testplug;
     
     
     gl::TextureRef	mLogo;
@@ -59,9 +60,12 @@ void ChormusikApp::setup()
     reverb = au::GenericUnit(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
     // tryout working wirh bidule; done a auval -a from the commandline and see how audiounits are identified; TODO: make a test call for grassroots AU's made by JUCE
     bidule = au::GenericUnit('aufx', 'BIDS', 'PLOG') ;
+    //TestPlugin Identifiers
+    //aumu CTEX Ctex
+    testplug = au::GenericUnit('aumu', 'CTEX', 'Ctex') ;
     speechSynth.getAvailableVoices();
     speechSynth.setVoice("Petra");
-    speechSynth.connectTo(bidule).connectTo(tap).connectTo(mixer).connectTo(output);
+    speechSynth.connectTo(testplug).connectTo(tap).connectTo(mixer).connectTo(output);
     output.start();
     
     
